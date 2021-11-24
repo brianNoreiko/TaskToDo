@@ -39,7 +39,7 @@ class Task(models.Model):
     description = models.TextField(null=True, blank=True)
     complete = models.BooleanField(default=False)
     create = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=50, choices=Status.choices, default=Status.in_progress)
+    status = models.CharField(max_length=50, choices=Status.choices, default=Status.inProgress)
 
     def __str__(self):
         return self.title
