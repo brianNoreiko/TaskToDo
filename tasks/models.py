@@ -9,14 +9,14 @@ class Board(models.Model):
     def __str__(self):
         return self.name
 
-    """@staticmethod
+    @staticmethod
     def is_owner(self, user):
         is_owner = False
 
         if user.id == self.owner.id:
             is_owner = True
 
-        return is_owner"""
+        return is_owner
 
 
 class Category(models.Model):
@@ -34,12 +34,11 @@ class Task(models.Model):
         finished = 'Finalizado'
         toDo = 'Pendiente'
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    complete = models.BooleanField(default=False)
-    create = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=50, choices=Status.choices, default=Status.inProgress)
+    date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=50, choices=Status.choices, default=Status.toDo)
 
     def __str__(self):
         return self.title

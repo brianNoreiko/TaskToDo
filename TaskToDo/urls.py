@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-from polls import views
+from tasks.views import CreateBoard, BoardsListView
 
 urlpatterns = [
-    path(r'^$', views.home, name='home'),
     path('admin/', admin.site.urls),
+    path('tasks/boardForm', CreateBoard.as_view()),
+    path('tasks/boardList', BoardsListView.as_view())
 ]
