@@ -70,11 +70,6 @@ class BoardsListView(ListView):
         return context
 
 
-def jsonBoards(request, id):
-    data = serialize("json", Board.objects.filter(owner_id=id))
-    return JsonResponse(data, status=200, safe=False)
-
-
 class CreateBoard(CreateView):
     template_name = 'tasks/boardForm.html'
     model = Board
