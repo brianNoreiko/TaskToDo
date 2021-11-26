@@ -7,17 +7,14 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView
 
+import tasks
 from tasks.models import Task, Board
 
 
-class createTask(LoginRequiredMixin, CreateView):
+class createTask(CreateView):
     model = Task
-    success_url = reverse_lazy('board')
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['user'] = self.request.user
-        return kwargs
+    fields = ['title', 'description', 'status']
+    success_url = reverse_lazy('all_tasks')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -27,7 +24,7 @@ class createTask(LoginRequiredMixin, CreateView):
 class updateTask(LoginRequiredMixin, UpdateView):
     model = Task
     fields = ['title', 'description', 'status']
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('all_tasks')
 
 
 class detailTask(LoginRequiredMixin, DetailView):
@@ -47,7 +44,7 @@ def all_tasks(request):
 class deleteTask(LoginRequiredMixin, DeleteView):
     model = Task
     context_object_name = 'task'
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('all_tasks')
 
     def get_queryset(self):
         owner = self.request.user

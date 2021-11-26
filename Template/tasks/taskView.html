@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% block content %}
-   <a href="{% url 'createTask' %}"><button type="button"> Add task</button></a>
+   <a href="{% url 'createTask' %}"><button type="button"> New task</button></a>
    <table class="table">
    <thead class="thead-dark">
     <tr>
@@ -11,23 +11,21 @@
     </tr>
   </thead>
   <tbody>
-   {% for task in tasks %}
+   {% for tasks in tasks %}
     <tr>
-      <td> {{ task.user }}</td>
-      <td> {{ task.title }}</td>
-      <td> {{ task.description }}</td>
-      <td> {{ task.status }}</td>
+      <td> {{ tasks.user }}</td>
+      <td> {{ tasks.title }}</td>
+      <td> {{ tasks.description }}</td>
+      <td> {{ tasks.status }}</td>
       <td>
-          <a href="{% url 'updateTask' task.id %}"><button type="button"> Edit </button></a>
-          <a href="{% url 'deleteTask' task.id %}"><button type="button"> Delete </button></a>
+          <a href="{% url 'updateTask' tasks.id %}"><button type="button"> Edit </button></a>
+          <a href="{% url 'deleteTask' tasks.id %}"><button type="button"> Delete </button></a>
       </td>
     </tr>
-
-       <button type="button"><a href="{% url 'logout' %}">cerrar sesion</a></button>
 
     {% endfor %}
 
   </tbody>
 </table>
-
+<a href="{% url 'logout' %}"><button type="button"> logout</button></a>
 {% endblock content %}
