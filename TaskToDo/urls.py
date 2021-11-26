@@ -22,7 +22,7 @@ from users.views import LoginView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tasks/boardForm/', CreateBoard.as_view()),
-    ##path('tasks/boardList', BoardsListView.as_view()),
+    path('tasks/boardList', BoardsListView.as_view()),
     path('', users.views.loginView, name='login'),
     path('logout/', users.views.logout_view, name='logout'),
     path('tasks/', all_tasks, name='all_tasks'),
