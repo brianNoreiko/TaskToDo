@@ -16,7 +16,8 @@ Including another URLconf
 import users.views
 from django.contrib import admin
 from django.urls import path
-from tasks.views import CreateBoard, BoardsListView, all_tasks, createTask, updateTask, deleteTask, detailTask
+from tasks.views import CreateBoard, BoardsListView, createTask, updateTask, deleteTask, detailTask, \
+    TasksListView
 from users.views import LoginView
 
 urlpatterns = [
@@ -25,7 +26,7 @@ urlpatterns = [
     path('tasks/boardList', BoardsListView.as_view()),
     path('', users.views.loginView, name='login'),
     path('logout/', users.views.logout_view, name='logout'),
-    path('tasks/', all_tasks, name='all_tasks'),
+    path('tasks/', TasksListView.as_view(), name='all_tasks'),
     path('register/', users.views.Register.as_view(), name='register'),
     path('task/<int:pk>/', detailTask.as_view(), name='task'),
     path('task-create/', createTask.as_view(), name='createTask'),

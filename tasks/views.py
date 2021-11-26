@@ -1,13 +1,11 @@
 # Create your views here.
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from django.core.serializers import serialize
 from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView
 
-import tasks
 from tasks.models import Task, Board
 
 
@@ -36,9 +34,19 @@ class detailTask(LoginRequiredMixin, DetailView):
 def all_tasks(request):
     tasks = Task.objects.all()
     return render(request,
-                  'tasks/taskView.html',
+                  'tasks/task_list.html',
                   {tasks: tasks}
                   )
+
+
+class TasksListView(ListView, LoginRequiredMixin):
+    model = Task
+    context_object_name = 'listTasks'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['listTasks'] = context['listTasks'].filter(user=self.request.user)
+        return context
 
 
 class deleteTask(LoginRequiredMixin, DeleteView):
@@ -60,9 +68,11 @@ class BoardsListView(ListView):
         context['listBoards'] = context['listBoards'].filter(owner=self.request.user)
         return context
 
+
 def jsonBoards(request, id):
     data = serialize("json", Board.objects.filter(owner_id=id))
     return JsonResponse(data, status=200, safe=False)
+
 
 class CreateBoard(CreateView):
     template_name = 'tasks/boardForm.html'
