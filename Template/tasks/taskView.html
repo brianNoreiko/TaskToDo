@@ -4,25 +4,26 @@
    <table class="table">
    <thead class="thead-dark">
     <tr>
+      <th scope="col">User</th>
       <th scope="col">Title</th>
       <th scope="col">Description</th>
       <th scope="col">Status</th>
-      <th scope="col">Category</th>
-        <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
    {% for task in tasks %}
     <tr>
+      <td> {{ task.user }}</td>
       <td> {{ task.title }}</td>
       <td> {{ task.description }}</td>
       <td> {{ task.status }}</td>
-      <td> {{ task.category }}</td>
       <td>
           <a href="{% url 'updateTask' task.id %}"><button type="button"> Edit </button></a>
           <a href="{% url 'deleteTask' task.id %}"><button type="button"> Delete </button></a>
       </td>
     </tr>
+
+       <button type="button"><a href="{% url 'logout' %}">cerrar sesion</a></button>
 
     {% endfor %}
 

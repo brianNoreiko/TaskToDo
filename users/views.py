@@ -38,7 +38,7 @@ class Register(CreateView):
         self.object.backend = 'django.contrib.auth.backends.ModelBackend'
         login(self.request, self.object)
         # success url
-        return redirect('login')
+        return '/'
 
 
 def logout_view(request):
