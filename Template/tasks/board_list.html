@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<p>Probando</p>
+<table class="table">
+   <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Owner</th>
+
+    </tr>
+  </thead>
+<body>
+{% for boards in object_list %}
+    <tr>
+      <td> {{ boards.id }}</td>
+      <td> {{ boards.name }}</td>
+      <td> {{ boards.owner }}</td>
+    </tr>
+
+    {% endfor %}
+</body>
+</table>
+</html>
