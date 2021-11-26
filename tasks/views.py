@@ -31,13 +31,13 @@ class detailTask(LoginRequiredMixin, DetailView):
     template_name = 'tasks/task.html'
 
 
-def all_tasks(request):
+"""def all_tasks(request):
     tasks = Task.objects.all()
     return render(request,
                   'tasks/task_list.html',
                   {tasks: tasks}
                   )
-
+"""
 
 class TasksListView(ListView, LoginRequiredMixin):
     model = Task

@@ -3,12 +3,12 @@
     <h1>Delete Task</h1>
 
     <div class="header-bar">
-    <a href="{% url 'all_tasks' %}">&#8592; Sacame de acá</a>
+    <a href="{% url 'all_tasks' %}">&#8592; Ir hacia atrás</a>
 </div>
     <p>Estás seguro que querés borrar <b>"{{task.title}}"?</b> </p>
 
     <form action="" method="POST">
       {% csrf_token %}
-      <input type="submit" action="" value="Más bien." />
+      <input type="submit" action="" value="Si, borrar." />
     </form>
 {% endblock content %}

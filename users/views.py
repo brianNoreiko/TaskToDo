@@ -1,17 +1,13 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from django.template.context_processors import request
-from django.urls import reverse_lazy
-from django.views.generic import CreateView, FormView
-from django.contrib.auth import authenticate, login
+from django.views.generic import CreateView
+from django.contrib.auth import login
 from django.contrib.auth import logout
 
-from TaskToDo import settings
-from tasks.views import BoardsListView
 from users.form import UserForm
 
 

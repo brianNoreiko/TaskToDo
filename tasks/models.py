@@ -22,9 +22,10 @@ class Category(models.Model):
 
 class Task(models.Model):
     class Status(models.TextChoices):
-        inProgress = 'En proceso'
-        finished = 'Finalizado'
-        toDo = 'Pendiente'
+        toDo = 'Pendiente', 'To do'
+        inProgress = 'En proceso', 'In progress'
+        finished = 'Finalizado', 'Finished'
+
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200)
