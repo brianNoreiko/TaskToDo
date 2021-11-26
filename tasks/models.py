@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Board(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200, default="Board")
@@ -8,15 +9,6 @@ class Board(models.Model):
 
     def __str__(self):
         return self.name
-
-    @staticmethod
-    def is_owner(self, user):
-        is_owner = False
-
-        if user.id == self.owner.id:
-            is_owner = True
-
-        return is_owner
 
 
 class Category(models.Model):

@@ -1,0 +1,19 @@
+<div class="header-bar">
+    <h4>Register</h4>
+</div>
+
+<div class="card-body">
+    <form method="POST">
+        {% csrf_token %}
+        <label>{{form.username.label}}</label>
+        {{form.username}}
+
+        <label>{{form.password1.label}}</label>
+        {{form.password1}}
+
+        <label>{{form.password2.label}}</label>
+        {{form.password2}}
+
+        <button class="btn btn-outline-dark mt-3" type="submit">Register</button>
+    </form>
+</div>
