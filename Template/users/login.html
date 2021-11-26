@@ -1,18 +1,12 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+
 <html lang="en">
 <head>
-    {% load static %}
-    <!-- Prism CSS -->
-    <link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript for Materialize CSS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <meta charset="UTF-8">
-    <title>Login</title>
+
 </head>
 <body>
-{% block content %}
     <div class="container">
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
@@ -35,14 +29,11 @@
     <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         <div class="col s12 m3">
             <div class="card-panel teal">
-                <h5> No tenés cuenta? <a href="{% url 'register' %}">Registrate</a></h5>
+                <h5 style="margin: auto;"> No tenés cuenta? <a href="{% url 'register' %}">Registrate</a></h5>
             </div>
         </div>
     </div>
   </div>
-{% endblock content %}
-
-
-
 </body>
 </html>
+{% endblock content %}
