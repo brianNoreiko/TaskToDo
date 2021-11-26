@@ -50,6 +50,7 @@ class TasksListView(ListView, LoginRequiredMixin):
 
 
 class deleteTask(LoginRequiredMixin, DeleteView):
+    template_name = 'tasks/task_delete.html'
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('all_tasks')
