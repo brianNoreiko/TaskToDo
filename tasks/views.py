@@ -39,9 +39,14 @@ class detailTask(LoginRequiredMixin, DetailView):
                   )
 """
 
+
 class TasksListView(ListView, LoginRequiredMixin):
     model = Task
     context_object_name = 'listTasks'
+
+    def get_queryset(self):
+        owner = self.request.user
+        return self.model.objects.filter(user=owner)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

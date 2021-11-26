@@ -22,13 +22,13 @@ from users.views import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tasks/boardForm/', CreateBoard.as_view()),
-    path('tasks/boardList', BoardsListView.as_view()),
+    ##path('tasks/boardForm/', CreateBoard.as_view()),'newBoard',
+    ##path('tasks/boardList', BoardsListView.as_view()), name='boardList',
     path('', users.views.loginView, name='login'),
     path('logout/', users.views.logout_view, name='logout'),
     path('tasks/', TasksListView.as_view(), name='all_tasks'),
     path('register/', users.views.Register.as_view(), name='register'),
-    path('task/<int:pk>/', detailTask.as_view(), name='task'),
+    ##path('task/<int:pk>/', detailTask.as_view(), name='task'),
     path('task-create/', createTask.as_view(), name='createTask'),
     path('task-update/<int:pk>/', updateTask.as_view(), name='updateTask'),
     path('task-delete/<int:pk>/', deleteTask.as_view(), name='deleteTask'),
